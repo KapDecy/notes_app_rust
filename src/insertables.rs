@@ -1,11 +1,12 @@
-use crate::schema::articles;
+use crate::schema::notes;
 use diesel::Insertable;
 use serde::Serialize;
+use uuid::Uuid;
 
 #[derive(Insertable, Serialize, Clone)]
-#[diesel(table_name=articles)]
-pub struct NewArticle {
-  pub title: String,
-  pub content: String,
-  pub created_by: i32,
+#[diesel(table_name=notes)]
+pub struct NewNote {
+    pub owner: Uuid,
+    pub label: String,
+    pub content: String,
 }

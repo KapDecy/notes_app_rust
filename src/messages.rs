@@ -1,4 +1,4 @@
-use crate::db_models::{User, Article};
+use crate::db_models::{Note, User};
 use actix::Message;
 use diesel::QueryResult;
 
@@ -7,15 +7,15 @@ use diesel::QueryResult;
 pub struct FetchUser;
 
 #[derive(Message)]
-#[rtype(result = "QueryResult<Vec<Article>>")]
+#[rtype(result = "QueryResult<Vec<Note>>")]
 pub struct FetchUserArticles {
-  pub user_id: i32,
+    pub user_id: i32,
 }
 
 #[derive(Message)]
-#[rtype(result = "QueryResult<Article>")]
+#[rtype(result = "QueryResult<Note>")]
 pub struct CreateArticle {
-  pub title: String,
-  pub content: String,
-  pub created_by: i32,
+    pub title: String,
+    pub content: String,
+    pub created_by: i32,
 }
